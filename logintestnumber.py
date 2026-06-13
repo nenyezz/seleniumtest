@@ -38,29 +38,18 @@ try:
 
     # Submit the form by pressing Enter
     password_field.send_keys(Keys.RETURN)
-    time.sleep(3)
-
-    # If Enter didn't work, click the login button manually
-    if "/auth/login" in driver.current_url:
-        print("Enter key didn't work, trying the login button...")
-        login_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']")))
-        login_button.click()
-        time.sleep(10)
+    time.sleep(10)
 
     # Check if login was successful
-    if "/auth/login" not in driver.current_url:
-        if "dashboard" in driver.current_url.lower() or driver.title == "Dashboard | Accelerate" or driver.title == "Device Verification | Accelerate":
-            print("Test Passed: Login worked and the Dashboard loaded.")
-        else:
-            print(f"Login worked but landed on an unexpected page: {driver.current_url}")
+    if driver.current_url == "https://staging--accelerate-02-web.netlify.app/auth/login/device-verification" or driver.title == "Device Verification | Accelerate":
+        print("Test Passed: Login worked and Device Verification loaded.")
     else:
-        print("Test Failed: Still on the login page after submitting.")
-        print("Double check that your email and password are correct.")
+        print(f"Login worked but landed on an unexpected page: {driver.current_url}")
 
 except Exception as e:
     print(f"Something went wrong: {e}")
     print(f"URL at time of error: {driver.current_url}")
 
 finally:
-    time.sleep(2)
+    time.sleep(5)
     driver.quit()
