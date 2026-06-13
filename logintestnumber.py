@@ -12,7 +12,7 @@ driver = webdriver.Firefox(service=service, options=webdriver.FirefoxOptions())
 driver.maximize_window()
 
 # Credentials
-EMAIL = "09158912996"
+NUMBER = "09158912996"
 PASSWORD = "2A99w+A>dJ4$;v%"
 
 # Open the login page
@@ -26,7 +26,7 @@ try:
     username_field = wait.until(EC.element_to_be_clickable((By.NAME, "username")))
     username_field.click()
     username_field.clear()
-    username_field.send_keys(EMAIL)
+    username_field.send_keys(NUMBER)
     time.sleep(1)
 
     # Find and fill in the password
@@ -45,7 +45,7 @@ try:
         print("Enter key didn't work, trying the login button...")
         login_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']")))
         login_button.click()
-        time.sleep(3)
+        time.sleep(10)
 
     # Check if login was successful
     if "/auth/login" not in driver.current_url:
