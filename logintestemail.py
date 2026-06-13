@@ -12,8 +12,8 @@ driver = webdriver.Firefox(service=service, options=webdriver.FirefoxOptions())
 driver.maximize_window()
 
 # Credentials
-EMAIL = "chinenye.o@irecharge.ng"
-PASSWORD = "2A99w+A>dJ4$;v%"
+EMAIL = "youremail"
+PASSWORD = "yourpassword"
 
 # Open the login page
 driver.get("https://staging--accelerate-02-web.netlify.app/auth/login")
